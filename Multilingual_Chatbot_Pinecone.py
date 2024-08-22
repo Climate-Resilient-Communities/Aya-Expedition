@@ -139,7 +139,7 @@ If the document contains keyword(s) or semantic meaning related to the user ques
 Give a binary score 'yes' or 'no' score to indicate whether the document is relevant to the question."""
 
 # LLM with function call
-llm = ChatCohere(model="command-r-plus", temperature=0)
+llm = ChatCohere(model="command-r-plus", temperature=0,cohere_api_key=COHERE_API_KEY)
 structured_llm_grader = llm.with_structured_output(GradeDocuments, preamble=preamble)
 
 grade_prompt = ChatPromptTemplate.from_messages(
@@ -233,7 +233,7 @@ Feel free to ask any questions or share your thoughts. We are all in this togeth
 """
 
 # LLM
-llm = ChatCohere(model_name="command-r-plus", temperature=0).bind(preamble=preamble)
+llm = ChatCohere(model_name="command-r-plus", temperature=0,cohere_api_key=COHERE_API_KEY).bind(preamble=preamble)
 
 # Prompt
 prompt = lambda x: ChatPromptTemplate.from_messages(
@@ -254,7 +254,7 @@ rag_chain = prompt | llm | StrOutputParser()
 preamble = """You are an assistant for question-answering tasks. Answer the question based upon your knowledge. Use three sentences maximum and keep the answer concise."""
 
 # LLM
-llm = ChatCohere(model_name="command-r-plus", temperature=0).bind(preamble=preamble)
+llm = ChatCohere(model_name="command-r-plus", temperature=0,cohere_api_key=COHERE_API_KEY).bind(preamble=preamble)
 
 # Prompt
 prompt = lambda x: ChatPromptTemplate.from_messages(
@@ -281,7 +281,7 @@ preamble = """You are a grader assessing whether an LLM generation is grounded i
 Give a binary score 'yes' or 'no'. 'Yes' means that the answer is grounded in / supported by the set of facts."""
 
 # LLM with function call
-llm = ChatCohere(model="command-r-plus", temperature=0)
+llm = ChatCohere(model="command-r-plus", temperature=0,cohere_api_key=COHERE_API_KEY)
 structured_llm_grader = llm.with_structured_output(GradeHallucinations, preamble=preamble)
 
 # Prompt
@@ -306,7 +306,7 @@ preamble = """You are a grader assessing whether an answer addresses / resolves 
 Give a binary score 'yes' or 'no'. Yes' means that the answer resolves the question."""
 
 # LLM with function call
-llm = ChatCohere(model="command-r-plus", temperature=0)
+llm = ChatCohere(model="command-r-plus", temperature=0,cohere_api_key=COHERE_API_KEY)
 structured_llm_grader = llm.with_structured_output(GradeAnswer, preamble=preamble)
 
 # Prompt
