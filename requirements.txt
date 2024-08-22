@@ -18,3 +18,5 @@ streamlit==1.33.0
 langchain_community==0.0.33
 pinecone-client==4.1.0
 pinecone-text==0.5.4
+python-dotenv
+
