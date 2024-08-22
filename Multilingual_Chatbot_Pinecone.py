@@ -36,7 +36,7 @@ PINECONE_API_KEY = st.secrets["api_keys"]["PINECONE_API_KEY"]
 LANGCHAIN_TRACING_V2 = st.secrets["settings"]["langchain_tracing_v2"]
 
 # Initialize Pinecone
-pinecone_client = Pinecone(api_key=pinecone_api_key)
+pinecone_client = Pinecone(api_key=PINECONE_API_KEY)
 index_name = "multilingual-climate-change-adaptation-index"
 spec = ServerlessSpec(cloud='aws', region='us-east1')
 
