@@ -30,7 +30,7 @@ LANGCHAIN_ENDPOINT  = st.secrets["api_keys"]["langchain_endpoint"]
 LANGCHAIN_API_KEY = st.secrets["api_keys"]["langchain_api_key"]
 TAVILY_API_KEY = st.secrets["api_keys"]["tavily_api_key"]
 tavily_api_key = st.secrets["api_keys"]["TAVILY_API_KEY"]
-["TAVILY_API_KEY"] = st.secrets["api_keys"]["tavily_api_key"]
+TAVILY_API_KEY = st.secrets["tavily_api_key"]
 pinecone_api_key = st.secrets["api_keys"]["PINECONE_API_KEY"]
 
 # Accessing settings
