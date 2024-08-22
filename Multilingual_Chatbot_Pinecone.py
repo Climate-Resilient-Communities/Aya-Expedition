@@ -26,6 +26,7 @@ import streamlit as st
 
 # Accessing API keys
 COHERE_API_KEY = st.secrets["api_keys"]["cohere_api_key"]
+cohere_api_key = st.secrets["api_keys"]["cohere_api_key"]
 LANGCHAIN_ENDPOINT  = st.secrets["api_keys"]["langchain_endpoint"]
 LANGCHAIN_API_KEY = st.secrets["api_keys"]["langchain_api_key"]
 TAVILY_API_KEY = st.secrets["api_keys"]["tavily_api_key"]
