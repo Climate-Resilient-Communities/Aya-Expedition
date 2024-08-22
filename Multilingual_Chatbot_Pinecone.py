@@ -9,6 +9,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_cohere import ChatCohere
 from langchain.schema import Document
+from langchain_core import LangChainBetaWarning
 from typing_extensions import TypedDict
 from langgraph.graph import END, StateGraph
 import cohere
