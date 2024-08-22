@@ -9,7 +9,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_cohere import ChatCohere
 from langchain.schema import Document
-from langchain_core import LangChainBetaWarning
 from typing_extensions import TypedDict
 from langgraph.graph import END, StateGraph
 import cohere
@@ -22,7 +21,7 @@ import time
 
 # Suppress all warnings of type Warning (superclass of all warnings)
 warnings.filterwarnings("ignore", category=Warning)
-warnings.simplefilter("ignore", LangChainBetaWarning)
+#warnings.simplefilter("ignore", LangChainBetaWarning)
 import streamlit as st
 
 # Accessing API keys
