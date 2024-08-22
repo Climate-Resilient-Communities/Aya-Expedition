@@ -26,7 +26,6 @@ import streamlit as st
 
 # Accessing API keys
 COHERE_API_KEY = st.secrets["api_keys"]["cohere_api_key"]
-cohere_api_key = st.secrets["api_keys"]["cohere_api_key"]
 LANGCHAIN_ENDPOINT  = st.secrets["api_keys"]["langchain_endpoint"]
 LANGCHAIN_API_KEY = st.secrets["api_keys"]["langchain_api_key"]
 TAVILY_API_KEY = st.secrets["api_keys"]["tavily_api_key"]
@@ -114,7 +113,7 @@ If the question is related to climate change, decide whether to use the vectorst
 """
 
 # Set up the LLM with the ability to make routing decisions
-llm = ChatCohere(model="command-r-plus", temperature=0)
+llm = ChatCohere(model="command-r-plus", temperature=0,cohere_api_key=COHERE_API_KEY)
 structured_llm_router = llm.bind_tools(tools=[QuestionVerification, web_search, vectorstore], preamble=preamble)
 
 # Define a prompt that asks the LLM to make a routing decision
