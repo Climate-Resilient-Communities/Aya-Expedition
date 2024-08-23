@@ -322,7 +322,7 @@ answer_grader = answer_prompt | structured_llm_grader
 
 ### Search ###
 from langchain_community.tools.tavily_search import TavilySearchResults
-web_search_tool = TavilySearchResults()
+web_search_tool = TavilySearchResults(tavily_api_key = tavily_api_key)
 
 ### Graph ###
 from typing_extensions import TypedDict
