@@ -29,7 +29,8 @@ async def run_chat(question, context):
     response_text = ""
     citations = ""
     try:
-        result = await run_workflow(inputs)
+        #result = await run_workflow(inputs)
+        result = run_workflow(inputs)
         response_text = result["generation"]
         citations = result["citations"]
     except Exception as e:
