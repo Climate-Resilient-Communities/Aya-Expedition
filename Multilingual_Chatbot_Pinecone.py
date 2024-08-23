@@ -31,6 +31,9 @@ LANGCHAIN_API_KEY = st.secrets["api_keys"]["langchain_api_key"]
 TAVILY_API_KEY = st.secrets["api_keys"]["tavily_api_key"]
 PINECONE_API_KEY = st.secrets["api_keys"]["pinecone_api_key"]
 
+import os
+os.environ["TAVILY_API_KEY"] = TAVILY_API_KEY
+
 # Accessing settings
 LANGCHAIN_TRACING_V2 = st.secrets["settings"]["langchain_tracing_v2"]
 
