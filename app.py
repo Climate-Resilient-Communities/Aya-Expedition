@@ -1,6 +1,7 @@
 import streamlit as st
 import random
 import time
+import asyncio
 from Multilingual_Chatbot_Pinecone import run_workflow  
 
 def add_vertical_space(num_lines):
