@@ -615,29 +615,36 @@ def grade_generation_v_documents_and_question(state):
     documents = state["documents"]
     generation = state["generation"]
 
-    score = hallucination_grader.invoke({"documents": documents, "generation": generation})
-    if score is None:
-        print("Hallucination grading failed to return a result. Showing unverified generation.")
-        return generation  # Returning the generation directly if hallucination check fails
-
+    score = answer_grader.invoke({"question": question, "generation": generation})
     grade = score.binary_score
+    if grade == "yes":
+        return "useful"
+    else:
+        return "not useful"
+        
+    #score = hallucination_grader.invoke({"documents": documents, "generation": generation})
+    #if score is None:
+    #    print("Hallucination grading failed to return a result. Showing unverified generation.")
+    #    return generation  # Returning the generation directly if hallucination check fails
+
+    #grade = score.binary_score
 
     # Check hallucination
-    if grade == "yes":
-        #print("---DECISION: GENERATION IS GROUNDED IN DOCUMENTS---")
-        # Check question-answering
-        #print("---GRADE GENERATION vs QUESTION---")
-        score = answer_grader.invoke({"question": question, "generation": generation})
-        grade = score.binary_score
-        if grade == "yes":
-            #print("---DECISION: GENERATION ADDRESSES QUESTION---")
-            return "useful"
-        else:
-            #print("---DECISION: GENERATION DOES NOT ADDRESS QUESTION---")
-            return "not useful"
-    else:
-        #pprint.pprint("---DECISION: GENERATION IS NOT GROUNDED IN DOCUMENTS, RE-TRY---")
-        return "not supported"
+    #if grade == "yes":
+    #    #print("---DECISION: GENERATION IS GROUNDED IN DOCUMENTS---")
+    #    # Check question-answering
+    #    #print("---GRADE GENERATION vs QUESTION---")
+    #    score = answer_grader.invoke({"question": question, "generation": generation})
+    #    grade = score.binary_score
+    #    if grade == "yes":
+    #        #print("---DECISION: GENERATION ADDRESSES QUESTION---")
+    #        return "useful"
+    #    else:
+    #        #print("---DECISION: GENERATION DOES NOT ADDRESS QUESTION---")
+    #        return "not useful"
+    #else:
+    #    #pprint.pprint("---DECISION: GENERATION IS NOT GROUNDED IN DOCUMENTS, RE-TRY---")
+    #    return "not supported"
 
 def generate(state):
     question = state["question"]
@@ -687,7 +694,7 @@ workflow.add_conditional_edges(
     "rag",
     grade_generation_v_documents_and_question,
     {
-        "not supported": "web_search", # Hallucinations: re-generate
+        #"not supported": "web_search", # Hallucinations: re-generate
         "not useful": "web_search", # Fails to answer question: fall-back to web-search
         "useful": "generate"
     },
