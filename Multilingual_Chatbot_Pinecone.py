@@ -277,11 +277,11 @@ llm_chain = prompt | llm | StrOutputParser()
 class GradeHallucinations(BaseModel):
     """Binary score for hallucination present in generation answer."""
 
-    binary_score: str = Field(description="Answer is grounded in the facts, 'yes' or 'no'")
+    binary_score: str = Field(description="Answer is coherent, 'yes' or 'no'")
 
 # Preamble
-preamble = """You are a grader assessing whether an LLM generation is grounded in / supported by a set of retrieved facts. \n
-Give a binary score 'yes' or 'no'. 'Yes' means that the answer is grounded in / supported by the set of facts."""
+preamble = """You are a grader assessing whether an LLM generation is coherent. \n
+Give a binary score 'yes' or 'no'. 'Yes' means that the answer is coherent."""
 
 # LLM with function call
 llm = ChatCohere(model="command-r-plus", temperature=0,cohere_api_key=COHERE_API_KEY)
